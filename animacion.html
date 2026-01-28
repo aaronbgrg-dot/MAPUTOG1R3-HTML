@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Línea de montaje</title>
+
+<style>
+  body {
+    font-family: Arial;
+    text-align: center;
+  }
+
+  #linea {
+    position: relative;
+    width: 900px;
+    height: 230px;
+    margin: 40px auto;
+    border: 2px solid black;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding-top: 10px;
+  }
+
+  .estacion {
+    width: 180px;
+    height: 120px;
+    border: 1px dashed black;
+    background: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .activa {
+    background: lightblue;
+  }
+
+  /* Cinta */
+  #cinta {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: gray;
+  }
+
+  /* Coche */
+  #coche {
+    position: absolute;
+    width: 80px;
+    height: 30px;
+    background: gray;
+    top: 160px;
+    left: 0;
+    transition: left 1s, background 1s;
+  }
+
+  .rueda {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: black;
+    border-radius: 50%;
+    bottom: -8px;
+  }
+
+  .izq { left: 8px; }
+  .der { right: 8px; }
+
+  #descripcion {
+    margin-top: 20px;
+    height: 40px;
+  }
+</style>
+</head>
+
+<body>
+
+<h2>Línea de Montaje del Coche</h2>
+
+<div id="linea">
+  <div class="estacion">Entrada a línea</div>
+  <div class="estacion">Pintado</div>
+  <div class="estacion">Control calidad</div>
+  <div class="estacion">Acabado</div>
+
+  <div id="cinta"></div>
+
+  <div id="coche">
+    <div class="rueda izq"></div>
+    <div class="rueda der"></div>
+  </div>
+</div>
+
+<div id="descripcion"></div>
+
+<script>
+  const coche = document.getElementById("coche");
+  const estaciones = document.querySelectorAll(".estacion");
+  const descripcion = document.getElementById("descripcion");
+
+  const fases = [
+    { left: 110, color: "gray", texto: "Entrada a línea: se ensamblan las piezas del coche." },
+    { left: 320, color: "red",  texto: "Pintado: se aplica la pintura al vehículo." },
+    { left: 530, color: "red",  texto: "Control de calidad: se revisa que todo esté correcto." },
+    { left: 740, color: "red",  texto: "Acabado: últimos detalles antes de salir de fábrica." }
+  ];
+
+  let fase = 0;
+
+  function avanzar() {
+    if (fase >= fases.length) return;
+
+    estaciones.forEach(e => e.classList.remove("activa"));
+    estaciones[fase].classList.add("activa");
+
+    coche.style.left = fases[fase].left + "px";
+    coche.style.background = fases[fase].color;
+    descripcion.textContent = fases[fase].texto;
+
+    fase++;
+  }
+
+  avanzar();
+
+ 
+  setInterval(avanzar, 5000);
+</script>
+
+</body>
+</html>
