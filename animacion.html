@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animación de Ensamblaje de Coche</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: whitesmoke;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        
+
+        .coche {
+            position: relative;
+            width: 200px;
+            height: 120px;
+        }
+
+        .cuerpo {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 160px;
+            height: 50px;
+            border: 3px solid #374151;
+            border-radius: 5px;
+            animation: bodyStages 6s infinite steps(1);
+        }
+
+        .techo {
+            position: absolute;
+            bottom: 70px;
+            left: 45px;
+            width: 110px;
+            height: 25px;
+            border: 3px solid #374151;
+            border-radius: 5px 5px 0 0;
+            animation: roofStages 6s infinite steps(1);
+        }
+
+        .ventana1 {
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            width: 30px;
+            height: 15px;
+            border: 2px solid #374151;
+            animation: windowStages 6s infinite steps(1);
+        }
+
+        .ventana2 {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            width: 30px;
+            height: 15px;
+            border: 2px solid #374151;
+            animation: windowStages 6s infinite steps(1);
+        }
+
+        .rueda1 {
+            position: absolute;
+            bottom: 10px;
+            left: 35px;
+            width: 30px;
+            height: 30px;
+            border: 3px solid #374151;
+            border-radius: 50%;
+            animation: wheelStages 6s infinite steps(1);
+        }
+
+        .rueda2 {
+            position: absolute;
+            bottom: 10px;
+            right: 35px;
+            width: 30px;
+            height: 30px;
+            border: 3px solid #374151;
+            border-radius: 50%;
+            animation: wheelStages 6s infinite steps(1);
+        }
+
+        .rueda-Izquierda {
+            position: absolute;
+            bottom: 17px;
+            left: 44px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: wheelCenterStages 6s infinite steps(1);
+        }
+
+        .rueda-Derecha {
+            position: absolute;
+            bottom: 17px;
+            right: 44px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: wheelCenterStages 6s infinite steps(1);
+        }
+
+        .faro {
+            position: absolute;
+            bottom: 35px;
+            right: 15px;
+            width: 8px;
+            height: 6px;
+            border-radius: 2px;
+            animation: headlightStages 6s infinite steps(1);
+        }
+
+        @keyframes bodyStages {
+            0%, 33% {
+                background: transparent;
+                border-color: #374151;
+            }
+            33%, 66% {
+                background: #ef4444;
+                border-color: #991b1b;
+            }
+            66%, 100% {
+                background: #dc2626;
+                border-color: #7f1d1d;
+            }
+        }
+
+        @keyframes roofStages {
+            0%, 33% {
+                background: transparent;
+                border-color: #374151;
+            }
+            33%, 66% {
+                background: #ef4444;
+                border-color: #991b1b;
+            }
+            66%, 100% {
+                background: #dc2626;
+                border-color: #7f1d1d;
+            }
+        }
+
+        @keyframes windowStages {
+            0%, 33% {
+                background: transparent;
+                border-color: #374151;
+            }
+            33%, 66% {
+                background: rgba(147, 197, 253, 0.7);
+                border-color: #991b1b;
+            }
+            66%, 100% {
+                background: rgba(219, 234, 254, 0.9);
+                border-color: #1e40af;
+            }
+        }
+
+        @keyframes wheelStages {
+            0%, 33% {
+                background: transparent;
+                border-color: #374151;
+            }
+            33%, 100% {
+                background: #1f2937;
+                border-color: #111827;
+            }
+        }
+
+        @keyframes wheelCenterStages {
+            0%, 66% {
+                background: transparent;
+            }
+            66%, 100% {
+                background: #6b7280;
+            }
+        }
+
+        @keyframes headlightStages {
+            0%, 66% {
+                background: transparent;
+            }
+            66%, 100% {
+                background: #fbbf24;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="coche">
+        <div class="techo">
+            <div class="ventana1"></div>
+            <div class="ventana2"></div>
+        </div>
+        <div class="cuerpo"></div>
+        <div class="rueda1"></div>
+        <div class="rueda2"></div>
+        <div class="rueda-Izquierda"></div>
+        <div class="rueda-Derecha"></div>
+        <div class="faro"></div>
+    </div>
+</body>
+</html>
