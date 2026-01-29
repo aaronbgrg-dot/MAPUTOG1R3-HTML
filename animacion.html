@@ -107,27 +107,32 @@
     { left: 530, color: "red",  texto: "Control de calidad: se revisa que todo esté correcto." },
     { left: 740, color: "red",  texto: "Acabado: últimos detalles antes de salir de fábrica." }
   ];
-
+// Fase actual, IA también para no usar var o const
   let fase = 0;
 
   function avanzar() {
     if (fase >= fases.length) return;
-
+// La parte de forEach es IA y sirve para desactivar estaciones
     estaciones.forEach(e => e.classList.remove("activa"));
+    // Activa la estación actual
     estaciones[fase].classList.add("activa");
-
+     // Mueve el coche
     coche.style.left = fases[fase].left + "px";
+     // Cambia color si aplica
     coche.style.background = fases[fase].color;
+       // Cambia el texto descriptivo
     descripcion.textContent = fases[fase].texto;
+      // Pasa a la siguiente fase
 
     fase++;
   }
-
+// Llamada
   avanzar();
 
- 
+ // Tiempo para transicionar
   setInterval(avanzar, 5000);
 </script>
 
 </body>
+
 </html>
